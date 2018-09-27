@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Google Search Test Suite" parallel="tests" thread-count="2">
+
+
+    <test name="Chrome">
+        <parameter name="browserName" value="Chrome"/>
+
+        <classes>
+            <class name="test.GoogleSearchTest">
+
+            </class>
+        </classes>
+
+    </test>
+
+    <test name="Firefox">
+        <parameter name="browserName" value="firefox"/>
+        <classes>
+            <class name="test.GoogleSearchTest">
+
+            </class>
+        </classes>
+
+    </test>
+
+
+
+</suite>

@@ -1,10 +1,19 @@
 package test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import page.GoogleStartPage;
+import org.openqa.selenium.*;
+
+
+import java.io.File;
 
 public class GoogleBaseTest {
     WebDriver driver;
@@ -19,12 +28,29 @@ public class GoogleBaseTest {
      * - Create GoogleStartPage.
      */
 
-    //   @Parameters({"browserName","prefixCountry"})
+    //   @Parameters({"browserName","domCountry"})
     @BeforeMethod
-    public void beforeMethod() {
-        //   открываем браузер и заходим на страницу
-        driver = new ChromeDriver();
-        driver.get("https://google.com/");
+    public void beforeMethod(@Optional("chrome") String browserName, @Optional("https://www.google.com/") String domCountry) throws Exception {
+
+        switch (browserName.toLowerCase()){
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                break;
+            case "ie":
+                WebDriverManager.iedriver().setup();
+                driver = new InternetExplorerDriver();
+                break;
+            default:
+                throw new Exception("Browser : " + browserName + " is not supported");
+
+        }
+
+        driver.get(domCountry);
         googleStartPage = new GoogleStartPage(driver);
     }
 
@@ -37,7 +63,6 @@ public class GoogleBaseTest {
      */
     @AfterMethod(alwaysRun = true)
     public void afterMethod() throws Exception {
-
         driver.quit();
     }
 }

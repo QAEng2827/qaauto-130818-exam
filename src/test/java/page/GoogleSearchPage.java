@@ -65,8 +65,7 @@ public class GoogleSearchPage extends GoogleBasePage {
         for (WebElement searchResult : searchResults) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", searchResult);
             serchResultsList.add(searchResult.getText());
-            System.out.println(searchResult + "First page");
-        }
+                }
         return serchResultsList;
     }
 

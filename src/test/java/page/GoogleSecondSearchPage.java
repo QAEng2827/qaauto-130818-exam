@@ -35,8 +35,7 @@ public class GoogleSecondSearchPage extends GoogleBasePage {
         for (WebElement searchResult : searchResults) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", searchResult);
             searchResultList.add(searchResult.getText());
-            System.out.println(searchResult + "Second page");
-        }
+                }
         return searchResultList;
     }
 
