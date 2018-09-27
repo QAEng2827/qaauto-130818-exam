@@ -24,7 +24,7 @@ public class GoogleMainSearchPageTest extends GoogleBaseTest {
 
         GoogleSearchPage googleSearchPage = googleMainPage.search(searchTerm);
         Assert.assertTrue(googleSearchPage.isPageLoaded(), "Search page is not loaded.");
-
+        System.out.println("Hello");System.out.println("Hello");System.out.println("Hello");
         Assert.assertEquals(googleSearchPage.getSearchResultsNumber(), 9, "Wrong number of searchResults on Search page.");
 
         List<String> searchResultsList = googleSearchPage.getSearchResultsList();
@@ -33,7 +33,7 @@ public class GoogleMainSearchPageTest extends GoogleBaseTest {
                     "SearchTerm " + searchTerm + " not found in:\n" + searchResult);
         }
 
-        System.out.println("Hello");
+
 
 
     }
