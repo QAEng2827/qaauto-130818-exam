@@ -25,7 +25,7 @@ public class GoogleMainSearchPageTest extends GoogleBaseTest {
         GoogleSearchPage googleSearchPage = googleMainPage.search(searchTerm);
         Assert.assertTrue(googleSearchPage.isPageLoaded(), "Search page is not loaded.");
 
-        Assert.assertEquals(googleSearchPage.getSearchResultsNumber(), 10, "Wrong number of searchResults on Search page.");
+        Assert.assertEquals(googleSearchPage.getSearchResultsNumber(), 9, "Wrong number of searchResults on Search page.");
 
         List<String> searchResultsList = googleSearchPage.getSearchResultsList();
         for (String searchResult : searchResultsList) {
