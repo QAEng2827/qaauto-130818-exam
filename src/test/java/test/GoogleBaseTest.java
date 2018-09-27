@@ -3,17 +3,13 @@ package test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import page.GoogleStartPage;
-import org.openqa.selenium.*;
 
-
-import java.io.File;
 
 public class GoogleBaseTest {
     WebDriver driver;
@@ -32,7 +28,7 @@ public class GoogleBaseTest {
     @BeforeMethod
     public void beforeMethod(@Optional("chrome") String browserName, @Optional("https://www.google.com/") String domCountry) throws Exception {
 
-        switch (browserName.toLowerCase()){
+        switch (browserName.toLowerCase()) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();

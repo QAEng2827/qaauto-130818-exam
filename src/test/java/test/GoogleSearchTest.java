@@ -1,10 +1,10 @@
 package test;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page.GoogleSearchPage;
 import page.GoogleSecondSearchPage;
-
 import java.util.List;
 
 // находим поле для  поиска
@@ -16,17 +16,24 @@ import java.util.List;
 
 public class GoogleSearchTest extends GoogleBaseTest {
 
-    @Test
-    public void basicSearchTest() {
+    @DataProvider
+    public Object[][] caseDataProvider() {
+        return new Object[][]{
+                {"Selenium", 10},
+                {"maven", 9},
 
-        String searchTerm = "Selenium";
+        };
+    }
+
+
+    @Test(dataProvider = "caseDataProvider")
+    public void basicSearchTest(String searchTerm, int numberResults) {
 
         Assert.assertTrue(googleStartPage.isPageLoaded(), "Start Google page is not loaded");
         GoogleSearchPage googleSearchPage = googleStartPage.search(searchTerm);
         Assert.assertTrue(googleSearchPage.isPageLoaded(), "Search page is not loaded.");
 
-        // System.out.println("Hello");System.out.println("Hello");System.out.println("Hello");
-        Assert.assertEquals(googleSearchPage.getSearchResultsNumber(), 10, "Wrong number of searchResults on Search page.");
+        Assert.assertEquals(googleSearchPage.getSearchResultsNumber(), numberResults, "Wrong number of searchResults on Search page.");
         List<String> searchResultsList = googleSearchPage.getSearchResultsList();
         for (String searchResult : searchResultsList) {
             Assert.assertTrue(searchResult.toLowerCase().contains(searchTerm.toLowerCase()),
@@ -36,7 +43,7 @@ public class GoogleSearchTest extends GoogleBaseTest {
         GoogleSecondSearchPage googleSecondSearchPage = googleSearchPage.goToSecondPage();
         Assert.assertTrue(googleSecondSearchPage.isPageLoaded(), "Search page is not loaded.");
 
-        Assert.assertEquals(googleSecondSearchPage.getSearchResultsNumber(), 10,
+        Assert.assertEquals(googleSecondSearchPage.getSearchResultsNumber(), numberResults,
                 "Wrong number of searchResults on Search page");
 
         List<String> searchSecondResultsList = googleSecondSearchPage.getSearchResultsList();

@@ -39,15 +39,6 @@ public class GoogleStartPage extends GoogleBasePage{
                 && luckyButton.isDisplayed();
 
     }
-//    public GoogleSearchPage isLoadedSearchPage (){
-//
-//        searchField.click();
-//        searchField.sendKeys("Selenium");
-//        searchField.sendKeys(Keys.ENTER);
-//        return new GoogleSearchPage(driver);}
-
-
-
 
     /*** search method - insert a search word with enter.
      *
