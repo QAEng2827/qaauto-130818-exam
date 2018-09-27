@@ -18,5 +18,5 @@ For environment setup:
     Install Chrome and FireFox browsers
 
     To execute tests from command line of Terminal: mvn clean install -DsuiteXmlFile=testNG.xml
-    To execute tests from GUI: right click on TestNG.xml and Run it.
+    To execute tests from GUI: right click on testNG.xml and Run it.
 
