@@ -20,6 +20,7 @@ public class GoogleSearchTest extends GoogleBaseTest {
     public Object[][] caseDataProvider() {
         return new Object[][]{
                 {"Selenium", 10},
+                {"selenium", 10},
                 {"maven", 9},
 
         };
