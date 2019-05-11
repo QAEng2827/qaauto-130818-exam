@@ -20,3 +20,4 @@ For environment setup:
     To execute tests from command line of Terminal: mvn clean install -DsuiteXmlFile=testNG.xml
     To execute tests from GUI: right click on testNG.xml and Run it.
 
+test
